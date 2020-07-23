@@ -13,4 +13,10 @@ public interface studentService {
      * @return
      */
     Student queryStudentById(Integer id);
+
+    /**
+     * 查询学生人数
+     * @return 学生人数
+     */
+    Integer queryStudentCount();
 }

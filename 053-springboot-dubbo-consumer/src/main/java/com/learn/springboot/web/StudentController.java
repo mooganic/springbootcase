@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author wuminggao
@@ -25,5 +26,12 @@ public class StudentController {
         Student student = studentService.queryStudentById(id);
         model.addAttribute("student", student);
         return "studentDetail";
+    }
+
+    @RequestMapping("/student/count")
+    @ResponseBody
+    public String studentCount(){
+        Integer count = studentService.queryStudentCount();
+        return "学生人数:"+count;
     }
 }
