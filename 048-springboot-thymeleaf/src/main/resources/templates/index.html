@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+
+</head>
+<body>
+<h1>从session中获取值：</h1>
+<div th:text="${#session.getAttribute('data')}"></div>
+<!--<div th:text="${}"></div>-->
+<div th:text="${#httpSession.getAttribute('data')}"></div>
+<div th:text="${session.data}"></div>
+<!--<div th:text="${session.data}"></div>-->
+<script type="text/javascript" th:inline="javascript">
+    //http://localhost:8080/springboot/user/detail
+    //获取协议名称
+    var scheme = [[${#request.getScheme()}]];
+    // alert(scheme);
+    //获取服务器名称
+    var serverName = [[${#request.getServerName()}]];
+    // alert(serverName);
+    //获取端口号
+    var port = [[${#request.getServerPort()}]];
+    // alert(port);
+    //获取上下文根
+    var contextPath = [[${#request.getContextPath()}]];
+
+    //工程路径
+    alert(scheme+'://'+serverName+':'+port+contextPath);
+
+
+    var requestURL = [[${#httpServletRequest.requestURL}]];
+    alert("requestURL:"+requestURL);
+    var queryString = [[${#httpServletRequest.queryString}]];
+    alert("queryString"+queryString);
+    //完整路径
+    alert(requestURL+'?'+queryString);
+</script>
+</body>
+
+
+</html>
